@@ -56,12 +56,13 @@ class Home extends StatelessWidget {
     List<Widget> squares = [];
 
     while (i < numSquares) {
-      Container square = Container(
+      Expanded square = Expanded(
+          child: Container(
         color: colors[i],
-        width: 60,
-        height: 60,
+        // width: 60,
+        // height: 60,
         child: Text(i.toString()),
-      );
+      ));
       i++;
 
       squares.add(square);
