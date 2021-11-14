@@ -23,6 +23,8 @@ class MyApp extends StatelessWidget {
               borderRadius: const BorderRadius.all(Radius.circular(30)),
               color: Colors.orange,
               gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
                   colors: [Colors.purple.shade100, Colors.purple.shade500]),
               shape: BoxShape.rectangle),
         ),
