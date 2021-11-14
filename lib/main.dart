@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           width: 200,
           height: 200,
           decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(30)),
+              // borderRadius: const BorderRadius.all(Radius.circular(30)),
               color: Colors.orange,
               image: const DecorationImage(
                   image: NetworkImage("https://bitly.com/flutter_tiger")),
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
                     Colors.red,
                     Colors.purple.shade500
                   ]),
-              shape: BoxShape.rectangle),
+              shape: BoxShape.circle),
         ),
       ),
     );
