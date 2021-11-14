@@ -27,8 +27,8 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sizeX = MediaQuery.of(context).size.width;
-    final sizeY = MediaQuery.of(context).size.height;
+    final sizeX = MediaQuery.of(context).size.width; // available screen width
+    final sizeY = MediaQuery.of(context).size.height; // available screen height
 
     return SizedBox(
       width: sizeX,
