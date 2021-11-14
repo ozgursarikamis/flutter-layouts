@@ -22,6 +22,8 @@ class MyApp extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(30)),
               color: Colors.orange,
+              image: const DecorationImage(
+                  image: NetworkImage("https://bitly.com/flutter_tiger")),
               gradient: RadialGradient(
                   center: const Alignment(-1.0, -1.0),
                   radius: 0.25,
