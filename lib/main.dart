@@ -10,17 +10,24 @@ class HelloLayoutsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.pink, brightness: Brightness.dark),
+      theme: ThemeData(
+          brightness: Brightness.dark,
+          primaryColor: Colors.blue,
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+              secondary: const Color(0xffd81b60), brightness: Brightness.dark),
+          textTheme: const TextTheme(
+              bodyText2: TextStyle(
+            fontSize: 24,
+          ))),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          centerTitle: false,
+          // centerTitle: false,
           title: const Text('Building Layouts with Flutter'),
         ),
         body: const Center(
           child: Text(
             'Hello Flutter Layouts',
-            style: TextStyle(fontSize: 24),
           ),
         ),
         floatingActionButton: FloatingActionButton(
