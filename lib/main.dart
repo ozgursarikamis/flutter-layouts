@@ -33,7 +33,9 @@ class Home extends StatelessWidget {
     return SizedBox(
       width: sizeX,
       height: sizeY,
-      child: Column(
+      child: Row(
+        verticalDirection: VerticalDirection.down,
+        textDirection: TextDirection.rtl,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: createSquares(5),
