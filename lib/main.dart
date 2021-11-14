@@ -34,6 +34,8 @@ class Home extends StatelessWidget {
       width: sizeX,
       height: sizeY,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: createSquares(5),
       ),
     );
