@@ -16,12 +16,14 @@ class MyApp extends StatelessWidget {
           title: const Text('Your Title here'),
         ),
         body: Container(
-          margin: const EdgeInsets.all(10),
+          margin: const EdgeInsets.all(100),
           width: 200,
           height: 200,
-          decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(30)),
+          decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(30)),
               color: Colors.orange,
+              gradient: LinearGradient(
+                  colors: [Colors.purple.shade100, Colors.purple.shade500]),
               shape: BoxShape.rectangle),
         ),
       ),
