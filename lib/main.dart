@@ -22,12 +22,15 @@ class MyApp extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(30)),
               color: Colors.orange,
-              gradient: RadialGradient(colors: [
-                Colors.purple.shade100,
-                Colors.orange,
-                Colors.red,
-                Colors.purple.shade500
-              ]),
+              gradient: RadialGradient(
+                  center: const Alignment(-1.0, -1.0),
+                  radius: 0.25,
+                  colors: [
+                    Colors.purple.shade100,
+                    Colors.orange,
+                    Colors.red,
+                    Colors.purple.shade500
+                  ]),
               shape: BoxShape.rectangle),
         ),
       ),
