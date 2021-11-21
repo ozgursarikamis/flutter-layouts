@@ -32,9 +32,11 @@ class Home extends StatelessWidget {
 
     return SizedBox(
       width: sizeX,
-      height: sizeY / 5,
-      child: ListView(
-        children: createSquares(50),
+      height: sizeY,
+      child: ListView.separated(
+        itemCount: 25,
+        itemBuilder: (context, index) => createSquare(index),
+        separatorBuilder: (context, index) => createSeparator(index),
         scrollDirection: Axis.vertical,
       ),
     );
@@ -56,7 +58,7 @@ class Home extends StatelessWidget {
     while (i < numSquares) {
       Container square = Container(
         color: colors[i % 5],
-        width: 100.0,
+        // width: 60.0 * (numSquares - i),
         height: 100.0,
         child: Text(i.toString()),
       );
@@ -66,6 +68,33 @@ class Home extends StatelessWidget {
     }
 
     return squares;
+  }
+
+  Widget createSeparator(int position) {
+    Widget separator = Container(
+      height: 15,
+      color: Colors.black26,
+    );
+
+    return separator;
+  }
+
+  Widget createSquare(int position) {
+    List colors = [
+      Colors.amber,
+      Colors.deepPurple,
+      Colors.deepOrange,
+      Colors.indigo,
+      Colors.lightBlue
+    ];
+
+    Container square = Container(
+      color: colors[position % 5],
+      height: 100.0,
+      child: Text(position.toString()),
+    );
+
+    return square;
   }
 
   List<Widget> showPizzaLayout(double sizeX, double sizeY) {
