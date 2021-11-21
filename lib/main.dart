@@ -33,8 +33,8 @@ class Home extends StatelessWidget {
     return SizedBox(
       width: sizeX,
       height: sizeY,
-      child: Stack(
-        children: showPizzaLayout(sizeX, sizeY),
+      child: ListView(
+        children: createSquares(25),
       ),
     );
   }
@@ -53,15 +53,12 @@ class Home extends StatelessWidget {
     squares.add(Container(color: Colors.black));
 
     while (i < numSquares) {
-      Positioned square = Positioned(
-          top: 100 + i.toDouble() * 100,
-          left: 25 + i.toDouble() * 25,
-          child: Container(
-            color: colors[i],
-            width: 60.0 * (numSquares - i),
-            height: 60.0 * (numSquares - i),
-            child: Text(i.toString()),
-          ));
+      Container square = Container(
+        color: colors[i % 5],
+        // width: 60.0 * (numSquares - i),
+        height: 100.0,
+        child: Text(i.toString()),
+      );
       i++;
 
       squares.add(square);
