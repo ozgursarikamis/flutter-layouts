@@ -32,9 +32,10 @@ class Home extends StatelessWidget {
 
     return SizedBox(
       width: sizeX,
-      height: sizeY,
+      height: sizeY / 5,
       child: ListView(
-        children: createSquares(25),
+        children: createSquares(50),
+        scrollDirection: Axis.horizontal,
       ),
     );
   }
@@ -55,7 +56,7 @@ class Home extends StatelessWidget {
     while (i < numSquares) {
       Container square = Container(
         color: colors[i % 5],
-        // width: 60.0 * (numSquares - i),
+        width: 100.0,
         height: 100.0,
         child: Text(i.toString()),
       );
