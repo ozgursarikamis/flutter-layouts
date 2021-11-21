@@ -53,8 +53,9 @@ class Home extends StatelessWidget {
     squares.add(Container(color: Colors.black));
 
     while (i < numSquares) {
-      Align square = Align(
-          alignment: Alignment.center,
+      Positioned square = Positioned(
+          top: 100 + i.toDouble() * 100,
+          left: 25 + i.toDouble() * 25,
           child: Container(
             color: colors[i],
             width: 60.0 * (numSquares - i),
