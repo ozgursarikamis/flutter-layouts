@@ -109,6 +109,24 @@ class Home extends StatelessWidget {
 
     layoutChildren.add(pizzaCard);
 
+    Positioned buttonOrder = Positioned(
+        bottom: sizeY / 20,
+        left: sizeX / 20,
+        width: sizeX - sizeX / 10,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              primary: Colors.orange,
+              elevation: 12,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(2))),
+          onPressed: () {},
+          child: const Text(
+            'Order Now!',
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+        ));
+
+    layoutChildren.add(buttonOrder);
     return layoutChildren;
   }
 }
