@@ -9,11 +9,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Rows and Columns',
+      title: 'Stack',
       home: Scaffold(
         appBar: AppBar(
           centerTitle: false,
-          title: const Text('Rows and Columns'),
+          title: const Text('Stack'),
         ),
         backgroundColor: Colors.indigo[100],
         body: const Home(),
@@ -33,11 +33,7 @@ class Home extends StatelessWidget {
     return SizedBox(
       width: sizeX,
       height: sizeY,
-      child: Row(
-        // verticalDirection: VerticalDirection.down,
-        // textDirection: TextDirection.rtl,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Stack(
         children: createSquares(5),
       ),
     );
@@ -56,14 +52,12 @@ class Home extends StatelessWidget {
     List<Widget> squares = [];
 
     while (i < numSquares) {
-      Expanded square = Expanded(
-          flex: i,
-          child: Container(
-            color: colors[i],
-            // width: 60,
-            // height: 60,
-            child: Text(i.toString()),
-          ));
+      Container square = Container(
+        color: colors[i],
+        width: 60,
+        height: 60,
+        child: Text(i.toString()),
+      );
       i++;
 
       squares.add(square);
