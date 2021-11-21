@@ -35,7 +35,7 @@ class Home extends StatelessWidget {
       height: sizeY / 5,
       child: ListView(
         children: createSquares(50),
-        scrollDirection: Axis.horizontal,
+        scrollDirection: Axis.vertical,
       ),
     );
   }
