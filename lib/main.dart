@@ -34,7 +34,7 @@ class Home extends StatelessWidget {
       width: sizeX,
       height: sizeY,
       child: Stack(
-        children: createSquares(5),
+        children: showPizzaLayout(sizeX, sizeY),
       ),
     );
   }
@@ -68,5 +68,47 @@ class Home extends StatelessWidget {
     }
 
     return squares;
+  }
+
+  List<Widget> showPizzaLayout(double sizeX, double sizeY) {
+    List<Widget> layoutChildren = [];
+
+    Container background = Container(
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: NetworkImage('http://bit.ly/pizza_image'),
+              fit: BoxFit.fitHeight)),
+    );
+    layoutChildren.add(background);
+
+    Positioned pizzaCard = Positioned(
+        top: sizeX / 20,
+        left: sizeX / 20,
+        child: Card(
+          elevation: 12,
+          color: Colors.white70,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          child: Column(
+            children: [
+              Text('Pizza Margherita',
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.deepOrange[800])),
+              Padding(
+                padding: const EdgeInsets.all(12),
+                child: Text(
+                  'This delicious pizza is made of Tomato,\n Mozarella and Basil.\n\nSeriously, you can\'t miss it.',
+                  style: TextStyle(fontSize: 18, color: Colors.grey[800]),
+                ),
+              )
+            ],
+          ),
+        ));
+
+    layoutChildren.add(pizzaCard);
+
+    return layoutChildren;
   }
 }
