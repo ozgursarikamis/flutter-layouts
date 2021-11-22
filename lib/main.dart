@@ -35,11 +35,11 @@ class Home extends StatelessWidget {
         height: sizeY,
         child: GridView.count(
           scrollDirection: Axis.vertical,
-          crossAxisCount: 3,
+          crossAxisCount: 2,
           mainAxisSpacing: 5.0,
           crossAxisSpacing: 5.0,
           padding: const EdgeInsets.all(5),
-          children: createSquares(50),
+          children: createGallery(50),
         ));
   }
 
@@ -198,6 +198,27 @@ class Home extends StatelessWidget {
     }
 
     return tileList;
+  }
+
+  List<Widget> createGallery(int numImages) {
+    List<Widget> images = [];
+    List<String> urls = [];
+    urls.add('http://bit.ly/gv_car_1');
+    urls.add('http://bit.ly/gv_car_2');
+    urls.add('http://bit.ly/gv_car_3');
+    urls.add('http://bit.ly/gv_car_4');
+    urls.add('http://bit.ly/gv_car_5');
+
+    Widget image;
+    int i = 0;
+
+    while (i < numImages) {
+      image = Image.network(urls[i % 5]);
+      images.add(image);
+      i++;
+    }
+
+    return images;
   }
 }
 
