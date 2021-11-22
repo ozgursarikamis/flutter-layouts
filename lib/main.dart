@@ -213,7 +213,11 @@ class Home extends StatelessWidget {
     int i = 0;
 
     while (i < numImages) {
-      image = Image.network(urls[i % 5]);
+      image = Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                fit: BoxFit.cover, image: NetworkImage(urls[i % 5]))),
+      );
       images.add(image);
       i++;
     }
