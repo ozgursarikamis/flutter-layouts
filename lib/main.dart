@@ -31,15 +31,11 @@ class Home extends StatelessWidget {
     final sizeY = MediaQuery.of(context).size.height; // available screen height
 
     return SizedBox(
-      width: sizeX,
-      height: sizeY,
-      child: ListView.separated(
-        itemCount: 25,
-        itemBuilder: (context, index) => createSquare(index),
-        separatorBuilder: (context, index) => createSeparator(index),
-        scrollDirection: Axis.vertical,
-      ),
-    );
+        width: sizeX,
+        height: sizeY,
+        child: ListView(
+          children: showContacts(),
+        ));
   }
 
   List<Widget> createSquares(int numSquares) {
@@ -156,4 +152,53 @@ class Home extends StatelessWidget {
     layoutChildren.add(buttonOrder);
     return layoutChildren;
   }
+
+  List<Contact> buildContacts() {
+    List<Contact> contacts = [];
+    contacts
+        .add(Contact('Thomas Anderson', 'The Matrix', Icons.sentiment_neutral));
+    contacts.add(
+        Contact('Frank Slade', 'Scent of a Woman', Icons.sentiment_satisfied));
+    contacts.add(Contact(
+        'Mildred Hayes',
+        'Three Billboards Outside Ebbing, Missouri',
+        Icons.sentiment_dissatisfied));
+    contacts
+        .add(Contact('Bruce Wayne', 'The Dark Night', Icons.sentiment_neutral));
+    contacts.add(
+        Contact('Jamal Malik', 'The Millionaire', Icons.sentiment_satisfied));
+
+    return contacts;
+  }
+
+  List<ListTile> showContacts() {
+    List<Contact> contacts = buildContacts();
+    for (var i = 0; i < 20; i++) {
+      contacts.addAll(buildContacts());
+    }
+
+    List<ListTile> tileList = [];
+    for (var element in contacts) {
+      tileList.add(ListTile(
+        title: Text(element.name),
+        subtitle: Text(element.subTitle),
+        leading: CircleAvatar(
+          child: Icon(element.icon),
+          backgroundColor: Colors.amber,
+          foregroundColor: Colors.white,
+        ),
+        trailing: const Icon(Icons.arrow_right),
+        onTap: () => true,
+      ));
+    }
+
+    return tileList;
+  }
+}
+
+class Contact {
+  String name;
+  String subTitle;
+  IconData icon;
+  Contact(this.name, this.subTitle, this.icon);
 }
