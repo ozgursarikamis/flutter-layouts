@@ -9,11 +9,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Stack',
+      title: 'Gridview',
       home: Scaffold(
         appBar: AppBar(
           centerTitle: false,
-          title: const Text('Stack'),
+          title: const Text('Gridview'),
         ),
         backgroundColor: Colors.indigo[100],
         body: const Home(),
@@ -33,8 +33,13 @@ class Home extends StatelessWidget {
     return SizedBox(
         width: sizeX,
         height: sizeY,
-        child: ListView(
-          children: showContacts(),
+        child: GridView.count(
+          scrollDirection: Axis.vertical,
+          crossAxisCount: 3,
+          mainAxisSpacing: 5.0,
+          crossAxisSpacing: 5.0,
+          padding: const EdgeInsets.all(5),
+          children: createSquares(50),
         ));
   }
 
