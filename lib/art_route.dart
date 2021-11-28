@@ -21,6 +21,7 @@ class ArtRoute extends StatelessWidget {
                 );
               }).toList();
             },
+            onSelected: (String value) => changeRoute(context, value),
           )
         ],
       ),
@@ -30,5 +31,24 @@ class ArtRoute extends StatelessWidget {
                 DecorationImage(image: NetworkImage(art), fit: BoxFit.cover)),
       ),
     );
+  }
+
+  void changeRoute(BuildContext context, String menuItem) {
+    String image = '';
+    switch (menuItem) {
+      case ArtUtil.caravaggio:
+        image = ArtUtil.img_caravaggio;
+        break;
+      case ArtUtil.monet:
+        image = ArtUtil.img_monet;
+        break;
+      case ArtUtil.vanGogh:
+        image = ArtUtil.img_vangogh;
+        break;
+      default:
+    }
+
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => ArtRoute(art: image)));
   }
 }
