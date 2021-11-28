@@ -10,6 +10,19 @@ class ArtRoute extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Navigating art'),
+        actions: <Widget>[
+          PopupMenuButton(
+            icon: const Icon(Icons.image),
+            itemBuilder: (BuildContext context) {
+              return ArtUtil.menuItems.map((String item) {
+                return PopupMenuItem<String>(
+                  child: Text(item),
+                  value: item,
+                );
+              }).toList();
+            },
+          )
+        ],
       ),
       body: Container(
         decoration: BoxDecoration(

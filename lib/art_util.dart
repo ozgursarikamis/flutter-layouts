@@ -1,5 +1,5 @@
 class ArtUtil {
-  static const caravaggio = '';
+  static const caravaggio = 'Caravaggio';
   static const monet = 'Monet';
   static const vanGogh = 'Van Gogh';
 
