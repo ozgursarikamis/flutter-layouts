@@ -11,16 +11,30 @@ class ArtRoute extends StatelessWidget {
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
+            const DrawerHeader(
+              child: Text(
+                'Choose your art',
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
+              decoration: BoxDecoration(
+                  color: Colors.orange,
+                  image: DecorationImage(
+                      image: NetworkImage('https://bit.ly/fl_sky'),
+                      fit: BoxFit.fill)),
+            ),
             ListTile(
               title: const Text(ArtUtil.caravaggio),
+              trailing: const Icon(Icons.art_track),
               onTap: () => changeRoute(context, ArtUtil.caravaggio),
             ),
             ListTile(
               title: const Text(ArtUtil.monet),
+              trailing: const Icon(Icons.art_track),
               onTap: () => changeRoute(context, ArtUtil.monet),
             ),
             ListTile(
               title: const Text(ArtUtil.vanGogh),
+              trailing: const Icon(Icons.art_track),
               onTap: () => changeRoute(context, ArtUtil.vanGogh),
             ),
           ],
