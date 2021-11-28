@@ -5,6 +5,8 @@ class ArtRoute extends StatelessWidget {
   final String art;
   ArtRoute({required this.art});
 
+  static int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +65,13 @@ class ArtRoute extends StatelessWidget {
                 DecorationImage(image: NetworkImage(art), fit: BoxFit.cover)),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.black,
+        currentIndex: _currentIndex,
+        onTap: (value) {
+          String _artist = ArtUtil.menuItems[value];
+          _currentIndex = value;
+          changeRoute(context, _artist);
+        },
+        selectedItemColor: Colors.orange,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
               icon: Icon(Icons.art_track), label: ArtUtil.caravaggio),
