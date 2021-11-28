@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hello_layouts/art_route.dart';
+import 'package:hello_layouts/art_util.dart';
 
 void main() => runApp(const MyApp());
 
@@ -10,15 +12,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'NavApp',
-      home: Scaffold(
-        appBar: AppBar(
-          centerTitle: false,
-          title: const Text('NavApp'),
-        ),
-        backgroundColor: Colors.white,
-        body: const Center(
-          child: Text('Hello World'),
-        ),
+      theme: ThemeData(primarySwatch: Colors.cyan),
+      home: ArtRoute(
+        art: ArtUtil.img_vangogh,
       ),
     );
   }
