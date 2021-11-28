@@ -62,6 +62,17 @@ class ArtRoute extends StatelessWidget {
             image:
                 DecorationImage(image: NetworkImage(art), fit: BoxFit.cover)),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.black,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: Icon(Icons.art_track), label: ArtUtil.caravaggio),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.art_track), label: ArtUtil.monet),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.art_track), label: ArtUtil.vanGogh)
+        ],
+      ),
     );
   }
 
