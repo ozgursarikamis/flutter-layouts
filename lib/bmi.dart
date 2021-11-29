@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:hello_layouts/utils.dart';
 
 class Bmi extends StatefulWidget {
@@ -9,6 +10,10 @@ class Bmi extends StatefulWidget {
 }
 
 class _BmiState extends State<Bmi> {
+  TextEditingController heightController = TextEditingController();
+  TextEditingController weightController = TextEditingController();
+  int unit = 0;
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -29,7 +34,9 @@ class _BmiState extends State<Bmi> {
                       child: const Text('Height'),
                       width: Util.widthOfScreen(context) / 3,
                     ),
-                    const Expanded(child: CupertinoTextField()),
+                    Expanded(
+                        child:
+                            CupertinoTextField(controller: heightController)),
                     Util.paddingLeft
                   ],
                 ),
@@ -41,7 +48,10 @@ class _BmiState extends State<Bmi> {
                       child: const Text('Weight'),
                       width: Util.widthOfScreen(context) / 3,
                     ),
-                    const Expanded(child: CupertinoTextField()),
+                    Expanded(
+                        child: CupertinoTextField(
+                      controller: weightController,
+                    )),
                     Util.paddingLeft
                   ],
                 ),
@@ -58,5 +68,39 @@ class _BmiState extends State<Bmi> {
     );
   }
 
-  void calculateBmi() {}
+  void showResult() async {
+    double height;
+    double weight;
+
+    int unit = await Util.getSettings();
+
+    height = double.tryParse(heightController.text) ?? 0;
+    weight = double.tryParse(weightController.text) ?? 0;
+
+    double result = Util.calculateBMI(height, weight, unit);
+
+    String message = 'Your BMI is ' + result.toString();
+    CupertinoAlertDialog dialog = CupertinoAlertDialog(
+      title: const Text('Result'),
+      content: Text(message),
+      actions: [
+        CupertinoDialogAction(
+          child: const Text('OK'),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        )
+      ],
+    );
+
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return dialog;
+        });
+  }
+
+  void calculateBmi() {
+    showResult();
+  }
 }
