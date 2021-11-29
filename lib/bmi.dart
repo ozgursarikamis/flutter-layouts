@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:hello_layouts/utils.dart';
 
 class Bmi extends StatefulWidget {
   const Bmi({Key? key}) : super(key: key);
@@ -16,20 +17,24 @@ class _BmiState extends State<Bmi> {
         child: Column(
           children: <Widget>[
             Image.network('https://bit.ly/img_bmi'),
+            Util.paddingTop,
             Row(
               children: const <Widget>[
                 Text('Height'),
                 Expanded(child: CupertinoTextField())
               ],
             ),
+            Util.paddingTop,
             Row(
               children: const <Widget>[
                 Text('Weight'),
                 Expanded(child: CupertinoTextField())
               ],
             ),
+            const Expanded(child: Util.paddingTop),
             CupertinoButton.filled(
-                child: const Text('Calculate BMI'), onPressed: calculateBmi)
+                child: const Text('Calculate BMI'), onPressed: calculateBmi),
+            Util.paddingTop
           ],
         ),
       ),
