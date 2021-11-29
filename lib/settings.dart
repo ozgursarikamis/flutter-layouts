@@ -9,13 +9,16 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  final Map<int, Widget> systems = const <int, Widget>{
-    0: Text('Decimal'),
-    1: Text('Imperial')
-  };
-  int unit = 0;
+  int unit = 1;
   @override
   Widget build(BuildContext context) {
+    final Map<int, Widget> systems = <int, Widget>{
+      0: const Text('Decimal'),
+      1: const Text('Imperial')
+    };
+
+    Util.getSettings().then(updateControl);
+
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(
         middle: Text('Settings'),
@@ -32,6 +35,7 @@ class _SettingsState extends State<Settings> {
                 child: CupertinoSegmentedControl(
                   children: systems,
                   onValueChanged: (int value) {
+                    Util.saveSettings(value);
                     updateControl(value);
                   },
                   groupValue: unit,
