@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hello_layouts/bmi.dart';
 
 void main() => runApp(const MyApp());
 
@@ -23,12 +24,16 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        "Hello Cupertino App",
-        style: TextStyle(
-            fontSize: 36, fontWeight: FontWeight.bold, color: Colors.white),
-      ),
+    return CupertinoTabScaffold(
+      tabBar: CupertinoTabBar(items: const [
+        BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.person), label: 'BMI'),
+        BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.settings_solid), label: 'Settings')
+      ]),
+      tabBuilder: (BuildContext context, int i) {
+        return const Bmi();
+      },
     );
   }
 }
