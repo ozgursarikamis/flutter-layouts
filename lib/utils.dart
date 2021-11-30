@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hello_layouts/radial.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Util {
@@ -65,5 +67,28 @@ class Util {
             fit: BoxFit.cover,
           ),
         ));
+  }
+
+  static Widget buildHeroRadialIcon(
+      String path, String tag, double minRadius, double maxRadius) {
+    return Hero(
+      tag: tag,
+      createRectTween: createTween,
+      child: SizedBox(
+        height: minRadius,
+        width: minRadius,
+        child: RadialTransition(
+          maxRadius: maxRadius,
+          child: Image.network(
+            path,
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+    );
+  }
+
+  static Tween<Rect?> createTween(Rect? begin, Rect? end) {
+    return MaterialRectArcTween(begin: begin, end: end);
   }
 }

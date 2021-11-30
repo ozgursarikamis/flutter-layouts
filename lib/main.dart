@@ -22,6 +22,9 @@ class HeroPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double maxRadius = Util.widthOfScreen(context);
+    const double minRadius = 80;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Hero Animation Title'),
@@ -36,14 +39,17 @@ class HeroPage extends StatelessWidget {
                 onTap: () {
                   changeRoute(context, 'coffee');
                 },
-                child: Util.buildHeroIcon(Util.coffeeUrl, 'coffee')),
+                child: Util.buildHeroRadialIcon(
+                    Util.coffeeUrl, 'coffee', minRadius, maxRadius)),
             GestureDetector(
                 onTap: () {
                   changeRoute(context, 'cappuccino');
                 },
-                child: Util.buildHeroIcon(Util.cappucinoUrl, 'cappuccino')),
+                child: Util.buildHeroRadialIcon(
+                    Util.cappucinoUrl, 'cappuccino', minRadius, maxRadius)),
             GestureDetector(
-              child: Util.buildHeroIcon(Util.teaUrl, 'tea'),
+              child: Util.buildHeroRadialIcon(
+                  Util.teaUrl, 'tea', minRadius, maxRadius),
               onTap: () {
                 changeRoute(context, 'tea');
               },
