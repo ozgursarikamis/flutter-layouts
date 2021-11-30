@@ -88,6 +88,27 @@ class Util {
     );
   }
 
+  static Widget buildHeroRadialDestination(String path, String tag,
+      double maxWidth, double maxHeight, VoidCallback pop) {
+    return GestureDetector(
+        child: Hero(
+          createRectTween: createTween,
+          tag: tag,
+          child: SizedBox(
+            height: maxHeight,
+            width: maxWidth,
+            child: RadialTransition(
+              maxRadius: maxWidth / 2,
+              child: Image.network(
+                path,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+        onTap: pop);
+  }
+
   static Tween<Rect?> createTween(Rect? begin, Rect? end) {
     return MaterialRectArcTween(begin: begin, end: end);
   }
