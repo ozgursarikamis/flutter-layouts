@@ -35,4 +35,35 @@ class Util {
     int result = prefs.getInt('unit') ?? 0;
     return result;
   }
+
+  static const String coffeeUrl = 'https://bit.ly/fl_coffee';
+  static const String cappucinoUrl =
+      'https://www.detaygida.com.tr/Content/Images/kahve.png';
+  static const String teaUrl =
+      'https://www.thespruceeats.com/thmb/q-mTJ8ei_cRAhvG2BRGtnqIIby4=/3865x2174/smart/filters:no_upscale()/assorted-coffee-drinks-in-cups-on-coffee-beans-background-682103254-5abd8e8a3128340037f89265.jpg';
+
+  static Widget buildHeroIcon(String path, String tag) {
+    return Hero(
+        tag: tag,
+        child: SizedBox(
+          width: 80,
+          height: 80,
+          child: Image.network(
+            path,
+            fit: BoxFit.cover,
+          ),
+        ));
+  }
+
+  static Widget buildHeroDestination(String path, tag, double width) {
+    return Hero(
+        tag: tag,
+        child: SizedBox(
+          width: width,
+          child: Image.network(
+            path,
+            fit: BoxFit.cover,
+          ),
+        ));
+  }
 }

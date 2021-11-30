@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hello_layouts/image_details.dart';
+import 'package:hello_layouts/utils.dart';
 
 void main() => runApp(const MyApp());
 
@@ -20,14 +22,59 @@ class HeroPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        child: const Text(
-          'Hero Page',
-          style: TextStyle(color: Colors.white),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Hero Animation Title'),
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(24),
+        alignment: Alignment.topLeft,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            GestureDetector(
+                onTap: () {
+                  changeRoute(context, 'coffee');
+                },
+                child: Util.buildHeroIcon(Util.coffeeUrl, 'coffee')),
+            GestureDetector(
+                onTap: () {
+                  changeRoute(context, 'cappuccino');
+                },
+                child: Util.buildHeroIcon(Util.cappucinoUrl, 'cappuccino')),
+            GestureDetector(
+              child: Util.buildHeroIcon(Util.teaUrl, 'tea'),
+              onTap: () {
+                changeRoute(context, 'tea');
+              },
+            ),
+          ],
         ),
-        decoration: const BoxDecoration(color: Colors.orange),
       ),
     );
+  }
+
+  void changeRoute(BuildContext context, String drink) {
+    switch (drink) {
+      case 'coffee':
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ImageDetails(Util.coffeeUrl, drink)));
+        break;
+      case 'tea':
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ImageDetails(Util.teaUrl, drink)));
+        break;
+      case 'cappuccino':
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ImageDetails(Util.coffeeUrl, drink)));
+        break;
+      default:
+    }
   }
 }
